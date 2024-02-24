@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block 'custom_css' %}
+
+<style>
+    /* Add your CSS styles here */
+    .container {
+        margin-top: 50px;
+        /* Adjust margin top as needed */
+    }
+
+    .h1 {
+        font-size: 2.5rem;
+        /* Adjust heading size as needed */
+        color: #333;
+        /* Adjust heading color as needed */
+        margin-bottom: 20px;
+        /* Adjust margin bottom as needed */
+    }
+
+    .p {
+        font-size: 1.1rem;
+        /* Adjust paragraph font size as needed */
+        color: #555;
+        /* Adjust paragraph color as needed */
+        margin-bottom: 15px;
+        /* Adjust margin bottom as needed */
+    }
+
+    .btn-outline-info {
+        background-color: transparent;
+        color: #17a2b8;
+        /* Adjust button text color as needed */
+        border-color: #17a2b8;
+        /* Adjust button border color as needed */
+        padding: 10px 20px;
+        /* Adjust button padding as needed */
+        font-size: 1rem;
+        /* Adjust button font size as needed */
+        border-radius: 5px;
+        /* Adjust button border radius as needed */
+        transition: background-color 0.3s, color 0.3s;
+        /* Add transition effect */
+    }
+
+    .btn-outline-info:hover {
+        background-color: #17a2b8;
+        /* Adjust button hover background color as needed */
+        color: #fff;
+        /* Adjust button hover text color as needed */
+    }
+
+    @media (max-width: 768px) {
+
+        /* Adjust styles for smaller screens */
+        .container {
+            margin-top: 20px;
+            /* Adjust margin top for smaller screens */
+        }
+
+        .h1 {
+            font-size: 2rem;
+            /* Adjust heading size for smaller screens */
+        }
+
+        .p {
+            font-size: 1rem;
+            /* Adjust paragraph font size for smaller screens */
+        }
+    }
+</style>
+{% endblock 'custom_css' %}
+{% block 'main' %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 pt-0 pt-lg-3"></div>
+        <div>
+            <h1 class="h1">Open a Loan Account</h1>
+            <p class="p">
+                Looking to fulfill your financial needs or invest in a big-ticket item? Opening a loan account with us
+                is quick and hassle-free. Whether it's for personal expenses, home renovation, education, or any other
+                purpose, our loan options cater to a variety of needs.
+            </p>
+            <p class="p">
+                To get started, you'll need to have an account with us. If you're an existing customer, simply log in to
+                your account and explore our loan offerings. If you're new to our bank, don't worry! You can easily
+                apply for an account online through our website.
+            </p>
+            <p class="p">
+                Once you have an account, the loan application process is straightforward. You can apply for a loan
+                online or visit one of our branches to speak with a loan officer who will guide you through the process.
+            </p>
+            <p class="p">
+                Our loan products come with competitive interest rates, flexible repayment options, and quick approval
+                times. We understand that everyone's financial situation is different, so we offer customized solutions
+                to meet your specific needs.
+            </p>
+            <p class="p">
+                Whether you're looking for a personal loan, home loan, car loan, or any other type of financing, we're
+                here to help you achieve your goals. Take the first step towards financial freedom and apply for a loan
+                account with us today!
+            </p>
+            <p class="p">
+                <a href="/login_page/"><button class="btn btn-outline-info">Go to Login</button></a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock 'main' %}

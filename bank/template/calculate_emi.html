@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate EMI</title>
+</head>
+<body>
+    <h1>Calculate EMI</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="loan_type">Loan Type:</label>
+        <select id="loan_type" name="loan_type">
+            <option value="personal">Personal</option>
+            <option value="home">Home</option>
+            <option value="vehicle">Vehicle</option>
+            <option value="property">Property</option>
+        </select><br><br>
+        <label for="loan_amount">Loan Amount:</label>
+        <input type="text" id="loan_amount" name="loan_amount"><br><br>
+        <label for="term_months">Term (in months):</label>
+        <input type="number" id="term_months" name="term_months"><br><br>
+        <input type="submit" value="Calculate EMI">
+    </form>
+</body>
+</html>

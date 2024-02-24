@@ -1,0 +1,60 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #map {
+            width: 100%; /* Set the width of the map container */
+            height: 600px; /* Set the height of the map container */
+        }
+    </style>
+    <title>Map</title>
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 19.180034129468993, lng: 72.83435227251701},
+                zoom: 8
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdjSZgFpwAUpd0SDdvfN-O4kt0jDNRJ8k&callback=initMap" async defer></script>
+</head>
+<body>
+    <div id="map"></div>
+</body>
+</html> -->
+
+<!-- map.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Maps Example</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}"></script>
+    <style>
+        #map {
+            height: 800px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            var myLatLng = {lat: 19.180034129468993, lng: 72.83435227251701};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: myLatLng
+            });
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'Our Bank'
+            });
+        }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdjSZgFpwAUpd0SDdvfN-O4kt0jDNRJ8k&callback=initMap">
+    </script>
+</body>
+</html>

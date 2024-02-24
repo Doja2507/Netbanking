@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="javascript" href="{% static 'js/bootstrap.bundle.min.js' %}" />
+    <link rel="javascript" href="{% static 'js/main.js' %}" />
+    <link rel="javascript" href="{ static 'js/jquery-3.6.4.min.js' %}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        select {
+            border: none;
+            /* Remove the border */
+            outline: none;
+            /* Remove the outline */
+            padding: 5px;
+            /* Add some padding for better appearance */
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+        }
+
+        h3 {
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 30px 0;
+            }
+        }
+    </style>
+
+<body
+    style="font-family: 'Times New Roman', Times, serif; background-image: url(https://static8.depositphotos.com/1033704/980/i/450/depositphotos_9808899-stock-photo-silver-gray-background.jpg);background-repeat: no-repeat;background-size: cover;">
+
+
+    <!-----------Navigation------------>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid  mx-auto">
+            <nav class="navbar ">
+                <div class="container">
+                    <a class="navbar-brand">
+                        <img src="{% static 'img/logo.png' %}" alt="Currency Exchange Image"
+                            style="width: 70px; height: 70px;">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/my_home/"><strong>Home</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/about_us/"><strong>About Us</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/contact/"><strong>Contact Us</strong></a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout_page/"><strong>Log Out</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/update/"><strong>Update KYC</strong></a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login_page/"><strong>Login</strong></a>
+                    </li>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="/register_page/"><strong>Register</strong></a>
+                    </li>
+
+                    {% endif %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"><strong>Services</strong>
+                            
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/saving/">Saving Account</a></li>
+                            <li><a class="dropdown-item" href="/current/">Current Account</a></li>
+                            <li><a class="dropdown-item" href="/have/">Loan Account</a></li>
+                            <li><a class="dropdown-item" href="/fix/">Fixed deposit</a></li>
+                            <li><a class="dropdown-item" href="/insurance/">LIC Insurance</a></li>
+                        </ul>
+                    </li>
+
+            </div>
+        </div>
+    </nav>

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block 'main' %}
+<style>
+    .card {
+        border-radius: 15px;
+        border: none;
+        background-color: #f8f9fa;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        padding: 40px 20px;
+    }
+
+    .card-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .btn {
+        border-radius: 15px;
+        padding: 8px 20px;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .btn-outline-primary {
+        color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .btn-outline-secondary {
+        color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn-outline-secondary:hover {
+        background-color: #6c757d;
+        color: #fff;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    <img src="{% static 'img/logo.png' %}" class="img-fluid mb-4">
+                    <h3 class="card-title mb-4">Fixed Deposit Created Successfully!!!</h3>
+                    <hr>
+                    <div class="d-flex justify-content-center">
+                        <a href="{% url 'create_fd' %}" class="btn btn-outline-primary mr-3">Create Another Fixed Deposit</a>
+                        <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary">Go to Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock 'main' %}
+

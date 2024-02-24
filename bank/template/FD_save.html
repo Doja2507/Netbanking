@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'main' %}
+<style>
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s;
+    }
+
+    .card:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-header {
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .card-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .table {
+        margin-bottom: 0;
+    }
+
+    .table td {
+        padding: 10px;
+        vertical-align: middle;
+    }
+
+    .table td:first-child {
+        font-weight: bold;
+    }
+
+    .card-footer {
+        background-color: #f8f9fa;
+        border-top: 1px solid #dee2e6;
+        border-radius: 0 0 10px 10px;
+        padding: 15px 20px;
+    }
+
+    .btn {
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+    /* Additional style for the bank logo */
+    .bank-logo {
+        width: 100%; /* Adjust as needed */
+        height: auto; /* Maintain aspect ratio */
+        margin-bottom: 20px; /* Add spacing between logo and table */
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {% if fixed_deposits %}
+                {% for deposit in fixed_deposits %}
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4 class="card-title">Fixed Deposit Slip</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="{% static 'img/logo.png' %}" alt="Bank Logo" class="img-fluid">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td><strong>Amount:</strong></td>
+                                                    <td>{{ deposit.amount }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Duration (months):</strong></td>
+                                                    <td>{{ deposit.duration_months }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Interest Rate (%):</strong></td>
+                                                    <td>{{ deposit.interest_rate }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Total Amount:</strong></td>
+                                                    <td>{{ deposit.total_amount }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Created At:</strong></td>
+                                                    <td>{{ deposit.created_at }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary btn-block" onclick="window.print()">Print</button>
+                            <a href="{% url 'dashboard' %}" class="btn btn-secondary btn-block">Go to dashboard</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No Fixed Deposits found.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock 'main' %}

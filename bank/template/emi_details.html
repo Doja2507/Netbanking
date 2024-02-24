@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'custom_css' %}
+<style>
+    /* Custom CSS for EMI details page */
+    body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+        color: #333;
+        text-align: center;
+        /* Center-align content */
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #0f0f0f;
+        /* Change heading tag color to blue */
+    }
+
+    p {
+        margin: 10px 0;
+    }
+</style>
+{% endblock 'custom_css' %}
+
+{% block 'main' %}
+<div class="container">
+    {% if loan_infos %}
+    {% for loan in loan_infos %}
+    <h1>EMI Details</h1>
+    {% if emi %}
+    <p>EMI Amount: {{ loan.emi }}</p>
+    {% else %}
+    <p>No EMI details available.</p>
+  
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock 'main' %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'custom_css' %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <style>
+    /* Add custom styles here */
+    /* Example: */
+    .container {
+      margin-top: 50px;
+    }
+    .btn-back {
+      background-color: #838486;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    .btn-back:hover {
+      background-color: #959698;
+    }
+  </style>
+{% endblock 'custom_css' %}
+
+{% block 'main' %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="text-center mb-4">Your Loan Approval is in Process</h3>
+          <p class="lead">Dear Customer,</p>
+          <p>We are pleased to inform you that your loan application is being processed. You will receive an email confirmation shortly with further details.</p>
+          <p>Thank you for choosing Our Bank.</p>
+          <p>Regards,<br>Our Bank</p>
+          <div class="text-center">
+            <a href="/dashboard/" class="btn btn-back">Back to Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock 'main' %}

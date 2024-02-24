@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block 'custom_css' %}
+<style>
+    h1 {
+    text-align: center;
+    }
+
+/* Add padding to paragraphs */
+p {
+    padding: 0 0 15px 0;
+}
+
+/* Add margin to the top and bottom of the container */
+.container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Add padding to the sides of the container */
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Make content justified */
+.text-justify {
+    text-align: justify;
+}
+
+/* Style the button */
+.btn-outline-info {
+    color: #17a2b8;
+    background-color: transparent;
+    border-color: #17a2b8;
+}
+
+.btn-outline-info:hover {
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+</style>
+{% endblock 'custom_css' %}
+{% block 'main' %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <h1 class="text-center ">Fixed Deposit Information</h1>
+            <hr>
+            <div class="text-justify">
+                <p>
+                    Looking for a secure investment option with guaranteed returns? Consider opening a fixed deposit account
+                    with us. Fixed deposits, also known as term deposits, offer a safe and reliable way to grow your savings
+                    over time.
+                </p>
+                <p>
+                    With a fixed deposit account, you can deposit a lump sum amount for a specified period, ranging from a
+                    few months to several years. During this period, your deposit earns a fixed interest rate, which is
+                    higher than regular savings accounts.
+                </p>
+                <p>
+                    Fixed deposits are an ideal choice for individuals who want to earn steady returns on their savings
+                    without taking on any risk. Whether you're planning for a major purchase, building an emergency fund, or
+                    saving for retirement, fixed deposits can help you achieve your financial goals.
+                </p>
+                <p>
+                    Opening a fixed deposit account is simple and straightforward. If you're an existing customer, you can
+                    log in to your account and create a fixed deposit online. If you're new to our bank, you can easily
+                    apply for an account through our website and then proceed to create a fixed deposit.
+                </p>
+                <p>
+                    Our fixed deposit accounts come with flexible terms, competitive interest rates, and the option to
+                    choose the frequency of interest payouts. Plus, your investment is backed by the security of our bank,
+                    giving you peace of mind.
+                </p>
+                <p>
+                    Take advantage of the benefits of fixed deposits and start growing your savings today. Create a fixed
+                    deposit account with us and enjoy the convenience and security of a reliable investment option.
+                </p>
+                <p> Please login first and then click on 
+                    <a href="/create_fd/"><button class="btn btn-outline-info">Create Fixed Deposit Account</button></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock 'main' %}

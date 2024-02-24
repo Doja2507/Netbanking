@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-image: url('https://static.vecteezy.com/system/resources/previews/020/874/490/non_2x/yellow-stain-on-white-background-hand-painted-abstract-watercolor-texture-free-photo.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        nav.navbar {
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Semi-transparent background */
+        }
+
+        select {
+            border: none;
+            outline: none;
+            padding: 5px;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .form-container {
+            background-color: rgb(251, 251, 251);
+            /* Semi-transparent background */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(243, 251, 100, 0.951);
+        }
+    </style>
+
+    <title>Our Bank</title>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">
+                <img src="{% static 'img/logo.png' %}" alt="Currency Exchange Image" style="width: 70px; height: 70px;">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/my_home/"><strong>Home</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/about_us/"><strong>About Us</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/contact/"><strong>Contact Us</strong></a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout_page/"><strong>Log Out</strong></a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login_page/"><strong>Login</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/register_page/"><strong>Register</strong></a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/saving/">Saving Account</a></li>
+                            <li><a class="dropdown-item" href="/current/">Current Account</a></li>
+                            <li><a class="dropdown-item" href="/have/">Loan Account</a></li>
+                            <li><a class="dropdown-item" href="/fix/">Fixed deposit</a></li>
+                            <li><a class="dropdown-item" href="/insurance/">LIC Insurance</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Transaction Form -->
+    <div class="container">
+        <div class="row p-3">
+            <div class="col-md-3 mt-5">
+                <img src="https://cdn3d.iconscout.com/3d/premium/thumb/mobile-money-transfer-5695404-4773608.png" class="img-fluid" alt="Wallet Image" />
+            </div>
+            <div class="col-md-6 offset mt-2 p-4 form-container">
+                <h2 class="text-center">Create Transaction</h2>
+                <hr>
+                <form method="post">
+                    {% csrf_token %}
+                    <label for="transaction_type">Transaction Type:</label>
+                    <select name="transaction_type" class="form-control" required>
+                        <option value="deposit">Deposit</option>
+                        <option value="withdrawal">Withdrawal</option>
+                    </select><br>
+
+                    <label for="amount">Amount:</label>
+                    <input type="number" name="amount" class="form-control" required><br>
+
+                    <label for="description">Description:</label>
+                    <input type="text" name="description" class="form-control" required><br>
+
+                    <button type="submit" class="btn btn-secondary">Create Transaction</button>
+                </form>
+                <hr>
+                <a href="/transactions/" style="text-decoration: none;"><button class="btn btn-warning">Transaction
+                        List</button></a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <hr>
+        <div class="container">
+            <div class="row">
+                <p><strong>&copy;Our bank.All Rights Reserved</strong></p>
+                <p>Site best viewed at 1366 * 768 resolution in Microsoft Edge 105+, Mozilla 105+ and Google Chrome 106+
+                    browser
+                    versions</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>

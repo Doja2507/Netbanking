@@ -1,0 +1,51 @@
+{% include 'header.html' %}
+
+{% load static %}
+{% block 'main' %}
+<div class="container">
+    <div class="row justify-content-center">
+        <!-- Payment Details Card -->
+        <div class="col-lg-6 col-md-8 col-sm-10 shadow mt-5 p-4" style="background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+            <h3 class="text-center mb-4 p-3" style="background-color: #999494;">Payment Details</h3>
+            
+            {% if n > 0 %}
+            <p class="text-center mb-3">Total Payments: {{ n }}</p>
+            <p class="text-center mb-3">Total Amount: INR {{ total }}</p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered text-center" style="background-color: #fff;">
+                    <thead>
+                        <tr class="bg-primary text-white">
+                            <th style="color: #333;">Transaction Type</th>
+                            <th style="color: #333;">Amount</th>
+                            <th style="color: #333;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for payment in data %}
+                        <tr>
+                            <td>{{ payment.transaction_type }}</td>
+                            <td>INR{{ payment.amount }}</td>
+                            <td>{{ payment.description }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center">
+                <a href="/makepayment/" class="btn btn-danger" style="font-weight: bold;">Make Payment</a>
+            </div>
+            {% else %}
+            <p class="text-center">No payments available.</p>
+            {% endif %}
+        </div>
+        <!-- End Payment Details Card -->
+
+        <!-- Image -->
+        <div class="col-lg-4 col-md-6 col-sm-8 mt-5">
+            <img src="https://png.pngtree.com/png-clipart/20230927/original/pngtree-businessman-is-thinking-and-wondering-character-3d-character-illustration-png-image_13004023.png" alt="Confused Businessman" class="img-fluid">
+        </div>
+        <!-- End Image -->
+    </div>
+</div>
+{% endblock 'main' %}

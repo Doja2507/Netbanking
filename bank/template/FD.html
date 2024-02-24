@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block 'main' %}
+<style>
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .btn {
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: #fff;
+    }
+
+    .btn-warning:hover {
+        background-color: #ffca28;
+        border-color: #ffca28;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: #fff;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #c82333;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-4">
+            <img src="https://png.pngtree.com/png-clipart/20231109/original/pngtree-d-illustration-diligent-office-worker-cartoon-3d-character-he-smiled-widely-png-image_13522745.png" alt="Office Worker" class="img-fluid" style="max-height: 400px;">
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="text-center mb-4">Create Fixed Deposit</h4>
+                    <hr>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="amount">Amount:</label>
+                            <input type="number" name="amount" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="duration_months">Duration (months):</label>
+                            <input type="number" name="duration_months" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="interest_rate">Interest Rate (%):</label>
+                            <input type="number" name="interest_rate" class="form-control" value="9"> 
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-warning">Create Fixed Deposit</button>&nbsp;&nbsp;
+                            <a href="/dashboard/" class="btn btn-danger">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock 'main' %}

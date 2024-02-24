@@ -1,0 +1,42 @@
+<!-- currency_converter.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+</head>
+<body>
+    <h1>Currency Converter</h1>
+    <form id="currency-form" method="GET" action="{% url 'convert_currency' %}">
+        {% csrf_token %}
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" required><br><br>
+
+        <label for="from_currency">From Currency:</label>
+        <select id="from_currency" name="from_currency" required>
+            {% for currency in currencies %}
+                <option value="{{ currency.code }}">{{ currency.code }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="to_currency">To Currency:</label>
+        <select id="to_currency" name="to_currency" required>
+            {% for currency in currencies %}
+                <option value="{{ currency.code }}">{{ currency.code }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <button type="submit">Convert</button>
+    </form>
+
+    {% if converted_amount %}
+        <p>{{ amount }} {{ from_currency }} is equal to {{ converted_amount }} {{ to_currency }}</p>
+    {% endif %}
+
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'custom_css' %}
+<style>
+    /* Custom CSS styles for the transaction list page */
+    .table th,
+    .table td {
+        vertical-align: middle;
+        /* Align text vertically center */
+    }
+
+    .table th {
+        padding: 10px;
+        /* Increase padding for table header */
+    }
+
+    .table td {
+        padding: 8px;
+        /* Increase padding for table cells */
+    }
+
+    .table th.text-center,
+    .table td.text-center {
+        vertical-align: middle;
+        /* Center align text in table cells */
+    }
+
+    .table th.bg-secondary,
+    .table td.bg-secondary {
+        background-color: rgb(238, 135, 156);
+        /* Custom background color */
+        color: #fff;
+        /* Text color for header cells */
+    }
+</style>
+{% endblock 'custom_css' %}
+
+{% block 'main' %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">Transaction List</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center bg-secondary text-white">Tr.ID</th>
+                            <th class="text-center bg-secondary text-white">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transaction in transactions %}
+                        <tr>
+                            <td class="text-center">{{ transaction.id }}</td>
+                            <td class="text-center">
+                                <a href="{% url 'transaction_detail' transaction.id %}">{{ transaction }}</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock 'main' %}

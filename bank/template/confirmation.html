@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <br>
+            <br>
+            <div class="card p-4">
+                <div class="card-body p-3">
+                    <h2 class="text-center mb-4">Confirmation</h2>
+                    <hr>
+                    <p class="text-center">Your information has been successfully submitted:</p>
+                    <ul>
+                        <li>First Name: {{ user_info.first_name }}</li>
+                        <li>Last Name: {{ user_info.last_name }}</li>
+                        <li>Address: {{ user_info.address }}</li>
+                        <li>City: {{ user_info.city }}</li>
+                        <li>State: {{ user_info.get_state_display }}</li>
+                        <li>Zip Code: {{ user_info.zipcode }}</li>
+                        <li>Aadhar: {{ user_info.Aadhar }}</li>
+                        <li>PAN: {{ user_info.PAN }}</li>
+                        <li>Mobile: {{ user_info.mobile }}</li>
+                        <!-- You can add more fields here if needed -->
+                    </ul>
+                    <div class="text-center">
+                        <div style="display: inline-block;">
+                            <a href="{% url 'login_page' %}" class="btn btn-outline-warning">Go to Login</a>
+                        </div>
+                        <div style="display: inline-block;">
+                            <a href="{% url 'my_home' %}" class="btn btn-outline-warning">Go to Homepage</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-8 col-sm-10">
+            <br>
+            <br><br>
+            <br>
+            <img src="https://static.vecteezy.com/system/resources/previews/024/346/420/original/3d-cartoon-businessman-on-transparent-background-generative-ai-png.png" class="img-fluid" alt="Image">
+        </div>
+    </div>
+</div>
+{% endblock 'main' %}

@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+<style>
+    .sec {
+        margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .top-small-banner-heading {
+            font-size: 1.5rem;
+        }
+
+        #banner-long-title {
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            font-size: 0.8rem;
+            padding: 8px 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+
+        .col-lg-1,
+        .col-lg-5,
+        .col-lg-6 {
+            padding-top: 0 !important;
+        }
+
+        .top-small-banner-heading {
+            font-size: 1.2rem;
+        }
+
+        #banner-long-title {
+            font-size: 1rem;
+        }
+
+        .btn {
+            font-size: 0.7rem;
+            padding: 6px 12px;
+        }
+    }
+
+    @media (max-width: 400px) {
+
+        .col-lg-1,
+        .col-lg-5,
+        .col-lg-6 {
+            padding-top: 0 !important;
+        }
+
+        .top-small-banner-heading {
+            font-size: 1rem;
+        }
+
+        #banner-long-title {
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            font-size: 0.6rem;
+            padding: 4px 8px;
+        }
+    }
+
+    /* New styles for service card hover effect */
+    .service-card {
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card img {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 15px;
+        transition: transform 0.3s ease;
+    }
+
+    .service-card p {
+        margin-bottom: 15px;
+    }
+
+    .service-card a {
+        transition: background-color 0.3s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-card:hover img {
+        transform: scale(1.1);
+    }
+
+    .service-card:hover a {
+        background-color: #6c757d;
+        /* Darker shade on hover */
+    }
+</style>
+
+<div class="container fade-in">
+    <div class="sec">
+        <marquee><strong> TO CUSTOMERS - As per RBI guidelines all Re-KYC/Periodic KYC due customers are requested to
+                contact your home/nearest branch along with latest KYC documents and update your due KYC, if you have
+                already updated your latest KYC with bank, please ignore
+            </strong></marquee>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <img src="{% static 'img/online-mobile-banking.jpg' %}" class="d-block w-100" alt="b">
+                    </div>
+                    <div class="carousel-item active">
+                        <img src="{% static 'img/transfer.avif' %}" class="d-block w-100" alt="a">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'img/secure.avif' %}" class="d-block w-100" alt="c">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-5 col-md-6 col-sm-12 pl-md-4 pl-lg-4 pt-md-4 pt-lg-0">
+            <div class="top-small-banner-heading">
+                Simple.Transparent.Secure.
+            </div>
+            <h1 id="banner-long-title" class="primary-text-color font-weight-bold text-uppercase">Building a brilliant
+                Monetary future.</h1>
+            <div class="col-lg-6 pt-3">
+                <a href="/register_page/"><button class="btn btn-outline-secondary"> Connect with us </button></a>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h3 style="text-align: center;">Our Services</h3>
+
+    <div class="row justify-content-center align-items-center" style="margin-top: 20px;">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="service-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/3844/3844121.png" alt="Credit Cards Image">
+                <p>Our credit card service offers various rewards and benefits tailored to your spending habits. With
+                    low APR rates and flexible payment options, managing your finances has never been easier.</p>
+                <a href="/cc/" class="btn btn-secondary">Go to Credit Cards Service</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="service-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/8054/8054273.png" alt="Currency Exchange Image">
+                <p>Our currency exchange service provides competitive rates for converting your money into various
+                    currencies. Whether you're traveling abroad or conducting international business, we ensure seamless
+                    transactions with minimal fees.</p>
+                <a href="https://paytm.com/tools/currency-converter/amount-1-from-inr-to-usd/" class="btn btn-secondary">Go to Currency Exchange Service</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="service-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/5086/5086319.png" alt="Loans Image">
+                <p>Our loans service offers flexible borrowing options with competitive interest rates. Whether you need
+                    funds for personal expenses, education, or business ventures, we provide tailored solutions to meet
+                    your financial needs.</p>
+                <a href="/have/" class="btn btn-secondary">Go to Loans Service</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock 'main' %}

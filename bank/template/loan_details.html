@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block 'custom_css' %}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body {
+        background-color: #f2f2f2; /* Set a light grey background color */
+    }
+    .container {
+        padding: 5px; /* Add padding to the container */
+    }
+    .loan-details {
+        max-width: 600px; /* Set maximum width for the loan details */
+        margin: 0 auto; /* Center the loan details horizontally */
+    }
+    .loan-item {
+        background-color: #ffffff; /* Set background color for each loan item */
+        background-image: url(https://images.unsplash.com/photo-1625225233840-695456021cde?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FsY3VsYXRvcnxlbnwwfHwwfHx8MA%3D%3D);
+        border: 1px solid #ccc; /* Add border around each loan item */
+        border-radius: 10px; /* Add border radius to loan items */
+        padding: 20px; /* Add padding inside each loan item */
+        margin-bottom: 20px; /* Add margin between loan items */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        background-repeat: no-repeat;
+    }
+    .loan-item h4 {
+        color: #333; /* Set color for loan item heading */
+        margin-bottom: 10px; /* Add margin below loan item heading */
+    }
+    .bottom-img {
+        text-align: left; /* Center the image */
+        margin-top: 20px; /* Add margin to the top */
+    }
+    .bottom-img img {
+        max-width: 400px; /* Set maximum width for the image */
+        border-radius: 5px; /* Add border radius to the image */
+    }
+    .make-payment-btn {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    /* cursor: pointer; */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.make-payment-btn:hover {
+    background-color: #45a049; /* Darker Green */
+}
+</style>
+{% endblock 'custom_css' %}
+{% block 'main' %}
+
+<div class="container">
+    <h3 class="text-center">Loan Details</h3>
+    <hr>
+    <div class="loan-details" style="border: #333;">
+        {% for loan in loans %}
+        <div class="loan-item">
+            <h4 style="background-color: rgb(148, 152, 152);padding: 3%;">Loan ID: {{ loan.id }}</h4>
+            <p><strong>First Name:</strong> {{ loan.first_name }}</p>
+            <p><strong>Last Name:</strong> {{ loan.last_name }}</p>
+            <p><strong>Nominee Name:</strong> {{ loan.nominee_name }}</p>
+            <p><strong>Loan Amount:</strong> {{ loan.loan_amount }}</p>
+            <p><strong>Reason for Loan:</strong> {{ loan.reason_for_loan }}</p>
+            <p><strong>Loan Date:</strong> {{ loan.loan_date }}</p>
+            <p><strong>Monthly Salary:</strong> {{ loan.monthly_salary }}</p>
+            <p><strong>Loan Type:</strong> {{ loan.loan_type }}</p>
+            <p><strong>Term (in months):</strong> {{ loan.term_months }}</p>
+            <p><strong>EMI:</strong> {{ loan.emi|floatformat:2 }}</p>
+            <!-- Add a button to make payment -->
+            <a href="/loan/"  style="text-decoration: none;" class="make-payment-btn">Make Payment</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="bottom-img">
+    <img src="https://static.vecteezy.com/system/resources/previews/025/003/254/original/3d-cute-cartoon-male-teacher-character-on-transparent-background-generative-ai-png.png" alt="Bottom Image">
+</div>
+{% endblock 'main' %}

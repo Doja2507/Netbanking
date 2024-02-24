@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block 'custom_css' %}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body {
+        background-color: #f8f9fa;
+        /* Set a light background color */
+        padding-top: 50px;
+        /* Add padding to the top */
+    }
+
+    .loan-details {
+        display: flex;
+        /* Use flexbox for layout */
+        justify-content: center;
+        /* Center horizontally */
+        align-items: center;
+        /* Center vertically */
+    }
+
+    .loan-details img {
+        max-width: 500px;
+        /* Set maximum width for the image */
+        margin-right: 20px;
+        /* Add right margin to separate image from card */
+    }
+
+    .custom-card {
+        width: 500px;
+        /* Set the width of the card */
+        max-width: 90%;
+        /* Set the maximum width of the card */
+    }
+
+    .card {
+        border: none;
+        /* Remove border from card */
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        /* Add a subtle shadow */
+    }
+
+    .card-body {
+        background-color: #ffffff;
+        /* Set card body background color */
+        border-radius: 10px;
+        /* Add border radius to card body */
+    }
+
+    .card-title {
+        font-size: 24px;
+        /* Increase font size for title */
+        color: #959798;
+        /* Set title color */
+        font-weight: bold;
+        /* Add bold font weight */
+    }
+
+    .card-text {
+        font-size: 16px;
+        /* Set font size for text */
+        color: #343a40;
+        /* Set text color */
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        /* Set button background color */
+        border: none;
+        /* Remove button border */
+        padding: 10px 20px;
+        /* Add padding to button */
+        border-radius: 5px;
+        /* Add border radius to button */
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        /* Darken button color on hover */
+    }
+</style>
+{% endblock 'custom_css' %}
+{% block 'main' %}
+<div class="container">
+    <h3 class="text-center mb-4">Loan Confirmation</h3>
+    <div class="loan-details">
+        <img src="https://cdni.iconscout.com/illustration/premium/thumb/home-loan-5329600-4470628.png" />
+        <!-- Add bank logo image -->
+        <div class="card custom-card"> <!-- Add custom-card class to control the card size -->
+            <div class="card-body">
+                <h5 class="card-title text-center mb-4">Loan Details</h5>
+                <hr>
+                <p class="card-text"><strong>Loan ID:</strong> {{ loan.id }}</p>
+                <p class="card-text"><strong>First Name:</strong> {{ loan.first_name }}</p>
+                <p class="card-text"><strong>Last Name:</strong> {{ loan.last_name }}</p>
+                <p class="card-text"><strong>Nominee Name:</strong> {{ loan.nominee_name }}</p>
+                <p class="card-text"><strong>Loan Amount:</strong> {{ loan.loan_amount }}</p>
+                <p class="card-text"><strong>Reason for Loan:</strong> {{ loan.reason_for_loan }}</p>
+                <p class="card-text"><strong>Loan Date:</strong> {{ loan.loan_date }}</p>
+                <p class="card-text"><strong>Monthly Salary:</strong> {{ loan.monthly_salary }}</p>
+                <p class="card-text"><strong>Loan Type:</strong> {{ loan.loan_type }}</p>
+                <p class="card-text"><strong>Term (in months):</strong> {{ loan.term_months }}</p>
+                <!-- Add form for sending email -->
+                <form action="{% url 'send_approval_email' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="loan_id" value="{{ loan.id }}">
+                    <button type="submit" class="btn btn-primary btn-block">Send Email for Approval</button><br>
+                </form>
+                <a href="/dashboard/"><button class="btn btn-primary btn-block">Back to Home</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock 'main' %}

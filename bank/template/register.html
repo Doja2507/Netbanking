@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="javascript" href="{% static 'js/bootstrap.bundle.min.js' %}" />
+    <link rel="javascript" href="{% static 'js/main.js' %}" />
+    <link rel="javascript" href="{ static 'js/jquery-3.6.4.min.js' %}" />
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-image: url('https://t4.ftcdn.net/jpg/06/30/94/53/240_F_630945388_JCrxlxilCixZQNF5r89hhvdaYNyegu0Z.jpg');
+            background-size: cover;
+        }
+
+        .navbar {
+            margin-top: 10px; /* Adjust the top margin of the navbar */
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-container:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay-content {
+            text-align: center;
+            color: #fff;
+        }
+
+        @media (max-width: 576px) {
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+    <title>Our Bank</title>
+</head>
+
+<body>
+
+    <!-----------Navigation------------>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'img/logo.png' %}" alt="Currency Exchange Image" style="width: 70px; height: 70px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/my_home/"><strong>Home</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/about_us/"><strong>About Us</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/contact/"><strong>Contact Us</strong></a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout_page/"><strong>Log Out</strong></a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login_page/"><strong>Login</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/register_page/"><strong>Register</strong></a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/saving/">Saving Account</a></li>
+                            <li><a class="dropdown-item" href="/current/">Current Account</a></li>
+                            <li><a class="dropdown-item" href="/have/">Loan Account</a></li>
+                            <li><a class="dropdown-item" href="/fix/">Fixed deposit</a></li>
+                            <li><a class="dropdown-item" href="/insurance/">LIC Insurance</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- -----------------registration--------------- -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-3 m-5 p-4 form-container">
+                <h2 class="text-center">Registration</h2>
+                <div class="avatar-container">
+                    <img src="{% static 'img/user2.png' %}" alt="Avatar">
+                    <div class="overlay">
+                        <!-- <div class="overlay-content">
+                            <label for="avatar" class="btn btn-primary">Upload Avatar</label>
+                            <input type="file" id="avatar" name="avatar" style="display: none;">
+                        </div> -->
+                    </div>
+                </div>
+                {% if errmsg %}
+                <div class="alert alert-danger">
+                    {{errmsg}}
+                </div>
+                {% endif %}
+                <form method="POST" action="/register_page/">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="Input1" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="Input1" name="uname" placeholder="Username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Input2" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="Input2" name="upass" placeholder="Password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Input3" class="form-label">Confirm password</label>
+                        <input type="password" class="form-control" id="Input3" name="ucpass" placeholder="Confirm Password">
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button type="submit" class="btn btn-success">Register</button><br>
+                        Already a user? <a href="/login_page/" style="text-decoration: none;">Login</a>
+                    </div>
+                    {% if success %}
+                    <div class="alert alert-success">
+                        {{success}}
+                    </div>
+                    {% endif %}
+                </form>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-4 offset-md-3 col-sm-6 offset-sm-3 col-xs-12 m-5 p-4 text-center">
+                <img src="https://cdn3d.iconscout.com/3d/premium/thumb/policy-4521342-3754719.png" class="img-fluid" alt="Responsive Image">
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

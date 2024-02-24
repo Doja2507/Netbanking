@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'custom_css' %}
+<style>
+ /* Custom CSS styles for the transaction detail page */
+.card {
+    border-radius: 15px; /* Rounded corners for the card */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow to the card */
+}
+
+.card-body {
+    padding: 40px; /* Increase padding for better spacing */
+}
+
+.img-fluid {
+    max-width: 30%; /* Ensure the image is responsive */
+    height: auto;
+}
+
+</style>
+{% endblock 'custom_css' %}
+
+{% block 'main' %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <br><br><br>
+                                <!-- Add AI cartoon image -->
+                                <img src="https://cdn3d.iconscout.com/3d/premium/thumb/money-bag-3980372-3297249.png" alt="AI Cartoon" class="img-fluid" style="max-width: 150px;">
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <h2 class="mb-3">Transaction Detail</h2>
+                            <p><strong>User:</strong> {{ transaction.user.username }}</p>
+                            <p><strong>Transaction Type:</strong> {{ transaction.get_transaction_type_display }}</p>
+                            <p><strong>Amount:</strong> INR{{ transaction.amount }}</p>
+                            <p><strong>Description:</strong> {{ transaction.description }}</p>
+                            <p><strong>Date:</strong> {{ transaction.date }}</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="/dashboard/" class="btn btn-outline-success">Back to Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock 'main' %}
